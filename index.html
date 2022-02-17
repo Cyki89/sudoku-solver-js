@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sudoku Solver</title>
+</head>
+<body>
+     <div class="header-container">
+       <div class="counter">Prompts: <span id="counter">0</span></div>
+       <div class="header">Sudoku Solver</div>
+       <div id="timer" class="timer">00:00:00</div>
+     </div>
+    <div id="board" class="board"></div>
+    <div class="btn-container">
+      <select  id="select-level">
+        <option value="">Select Level</option>
+      </select>
+      <button class="btn" data-button="prompt">Get Prompt</button>        
+      <button class="btn" data-button="check">Check Board</button>
+      <button class="btn" data-button="new-board">New Board</button>
+      <button class="btn" data-button="solve">Solve Board</button>
+      <button class="btn" data-button="reset">Reset Board</button>
+    <div id="end-game-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span id="end-game-modal-close" class="close">&times;</span>
+            <h2 class="modal-header-title">Game Over</h2>
+          </div>
+          <div class="modal-body">
+            <div>Congratulation, You Solve This Board Correctly!</div>
+            <div>Game Time: <span id="modal-timer"></span></div>
+            <div>Get Prompts: <span id="modal-counter"></span></div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+</body>
+<script src="index.js" type="module"></script>
+</html>

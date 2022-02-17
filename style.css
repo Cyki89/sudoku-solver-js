@@ -1,0 +1,238 @@
+:root {
+  --color-white: azure;
+
+  --color-grey: hsl(180, 25%, 25%);
+  --color-darkgreey: hsl(180, 10%, 25%);
+
+  --color-lightblue: hsl(210, 60%, 40%);
+  --color-blue: hsl(210, 70%, 40%);
+  --color-darkblue: hsl(210, 80%, 40%);
+
+  --color-green: hsl(120, 100%, 40%);
+  --color-darkgreen: hsl(120, 60%, 40%);
+
+  --color-red: hsl(0, 100%, 50%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  background-color: var(--color-grey);
+  margin: 0;
+  font-size: clamp(1em, 2.4vmin, 1.15em);
+  min-height: 100vh;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 36em;
+  margin-bottom: 0.5em;
+}
+
+.header {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 3em;
+}
+
+.counter,
+.timer {
+  font-size: 1.2em;
+  padding: 0.5em 1.2em;
+  border-radius: 1.2em;
+  color: var(--color-white);
+  background: var(--color-blue);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, 4em);
+  grid-template-rows: repeat(9, 4em);
+  gap: 0.1em;
+  background-color: var(--color-white);
+  border: solid 0.3em var(--color-white);
+}
+
+.cell {
+  font-size: 1.5em;
+  color: var(--color-white);
+  background-color: var(--color-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.cell:nth-child(9n + 3),
+.cell:nth-child(9n + 6) {
+  border-right: solid 0.15em var(--color-white);
+}
+
+.cell:nth-child(n + 19):nth-child(-n + 27),
+.cell:nth-child(n + 46):nth-child(-n + 54) {
+  border-bottom: solid 0.15em var(--color-white);
+}
+
+.cell:hover:not(.computed),
+.cell:focus:not(.computed) {
+  background-color: var(--color-blue);
+}
+
+.computed {
+  cursor: default;
+  background-color: var(--color-darkgreey);
+}
+
+.correct {
+  cursor: default;
+  background-color: var(--color-green);
+}
+
+.wrong {
+  cursor: default;
+  background-color: var(--color-red);
+}
+
+.hovered {
+  background-color: var(--color-blue);
+}
+
+.active {
+  background-color: var(--color-lightblue);
+}
+
+.btn-container {
+  margin-top: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 36em;
+  column-gap: 2.5em;
+  row-gap: 1em;
+}
+
+#select-level {
+  font-size: 1.2em;
+  padding: 0.5em 1.2em;
+  border-radius: 1.2em;
+  border: none;
+  outline: 0;
+  color: var(--color-white);
+  background: var(--color-blue);
+}
+
+.btn {
+  font-size: 1.2em;
+  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: 1.2em;
+  outline: 0;
+  color: var(--color-white);
+  background: var(--color-blue);
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-darkblue);
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: var(--color-darkgreey);
+}
+
+.btn.disabled:hover,
+.btn.disabled:focus {
+  background-color: var(--color-darkgreey);
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 25vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: var(--color-white);
+  margin: auto;
+  padding: 0;
+  width: 30em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.8s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: var(--color-white);
+  float: right;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--color-darkgreey);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 0.1em 0.8em;
+  background-color: var(--color-darkgreen);
+  color: var(--color-white);
+}
+
+.modal-header-title {
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.modal-body {
+  font-size: 1.4em;
+  padding: 0.5em 0.8em;
+  color: var(--color-white);
+  background-color: var(--color-darkgreey);
+}
+
+.modal-body > div {
+  margin: 0.5em 0em;
+}
+
+.modal-footer {
+  padding: 0.1em 0.8em;
+  background-color: var(--color-darkgreen);
+  color: white;
+  min-height: 5em;
+}
