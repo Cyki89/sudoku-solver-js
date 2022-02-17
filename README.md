@@ -1,3 +1,3 @@
-"# sudoku-solver-js" 
+# sudoku-solver-js 
 
-Sudoku Solver With Pure JavaScript, Html, CSS.
+Sudoku Game And Solver With Pure JavaScript, Html, CSS.
