@@ -1,3 +1,3 @@
 # sudoku-solver-js 
 
-Sudoku Game And Solver With Pure JavaScript, Html, CSS.
+Sudoku Game Solver And Board Generator With Pure JavaScript, Html, CSS.
